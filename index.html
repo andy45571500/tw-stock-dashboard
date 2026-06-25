@@ -3,276 +3,241 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>台灣股市每日資訊看板 - 2026/06/24</title>
+<title>台灣股市每日資訊看板 2026-06-25</title>
 <style>
   :root{
-    --bg:#f4f6fa; --card:#ffffff; --primary:#0f4c81; --accent:#1b8a5a;
-    --red:#d23f3f; --green:#1b8a5a; --text:#1c2533; --muted:#6b7480; --border:#e3e7ee;
+    --bg:#f4f6fb; --card:#ffffff; --ink:#1a2233; --sub:#5b6678;
+    --blue:#2c5fd9; --blue-light:#e8eefc; --green:#0f9d58; --green-light:#e6f7ee;
+    --red:#d93025; --red-light:#fdeceb; --amber:#b8860b; --amber-light:#fff6e0;
+    --border:#e4e8f0; --shadow:0 2px 10px rgba(20,30,60,0.06);
   }
   *{box-sizing:border-box;}
-  body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Noto Sans TC",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-  header{background:linear-gradient(135deg,#0f4c81,#1b6ca8);color:#fff;padding:28px 24px 20px;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;}
+  header{background:linear-gradient(135deg,#1a2b5c,#2c5fd9);color:#fff;padding:28px 24px 22px;}
   header h1{margin:0 0 6px;font-size:1.6rem;}
-  header .sub{font-size:0.95rem;opacity:0.92;}
-  nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;gap:4px;padding:10px 16px;z-index:10;box-shadow:0 2px 6px rgba(0,0,0,0.04);}
-  nav a{color:var(--primary);text-decoration:none;font-size:0.85rem;padding:8px 12px;border-radius:6px;font-weight:600;white-space:nowrap;}
-  nav a:hover{background:var(--bg);}
+  header .meta{font-size:.92rem;opacity:.92;display:flex;gap:14px;flex-wrap:wrap;}
+  .badge{display:inline-block;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.35);border-radius:20px;padding:3px 12px;font-size:.82rem;}
+  nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border);box-shadow:var(--shadow);overflow-x:auto;white-space:nowrap;}
+  nav a{display:inline-block;padding:12px 16px;color:var(--blue);text-decoration:none;font-size:.88rem;font-weight:600;}
+  nav a:hover{background:var(--blue-light);}
   main{max-width:1080px;margin:0 auto;padding:20px 16px 60px;}
-  section{margin-bottom:36px;}
-  section h2{font-size:1.25rem;color:var(--primary);border-left:5px solid var(--primary);padding-left:10px;margin-bottom:14px;}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,0.03);}
+  section{margin-bottom:34px;}
+  .sec-title{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .sec-title h2{font-size:1.25rem;margin:0;}
+  .sec-num{background:var(--blue);color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;flex-shrink:0;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:12px;box-shadow:var(--shadow);}
   .card h3{margin:0 0 6px;font-size:1.02rem;}
-  .card h3 a{color:var(--primary);text-decoration:none;}
-  .card h3 a:hover{text-decoration:underline;}
-  .meta{font-size:0.78rem;color:var(--muted);margin-bottom:8px;}
-  .meta span{margin-right:10px;}
-  .tag{display:inline-block;background:#eef3fa;color:var(--primary);font-size:0.72rem;padding:2px 8px;border-radius:10px;margin-right:6px;}
-  table{width:100%;border-collapse:collapse;font-size:0.88rem;margin-top:6px;}
-  th,td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left;}
-  th{background:#f8fafc;color:var(--muted);font-weight:600;}
-  .pos{color:var(--green);font-weight:700;}
-  .neg{color:var(--red);font-weight:700;}
-  .badge-buy{background:#e6f4ec;color:var(--green);padding:2px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;}
-  .badge-hold{background:#eef3fa;color:var(--primary);padding:2px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;}
-  .badge-sell{background:#fbeaea;color:var(--red);padding:2px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;}
-  .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px;}
-  .stat{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px;text-align:center;}
-  .stat .label{font-size:0.75rem;color:var(--muted);}
-  .stat .value{font-size:1.15rem;font-weight:700;margin-top:4px;}
-  .note{font-size:0.8rem;color:var(--muted);background:#fff9e8;border:1px solid #f0e2a8;border-radius:6px;padding:8px 12px;margin:10px 0;}
-  .disclaimer{font-size:0.78rem;color:var(--muted);text-align:center;margin-top:40px;border-top:1px solid var(--border);padding-top:16px;}
-  .links-list{font-size:0.78rem;color:var(--muted);word-break:break-all;}
-  .links-list a{color:var(--primary);}
+  .card h3 a{color:var(--ink);text-decoration:none;}
+  .card h3 a:hover{color:var(--blue);text-decoration:underline;}
+  .src-line{font-size:.8rem;color:var(--sub);margin-bottom:8px;}
+  .src-line a{color:var(--blue);text-decoration:none;}
+  .summary{font-size:.92rem;color:#333;}
+  .tag{display:inline-block;font-size:.74rem;padding:2px 8px;border-radius:6px;margin-right:6px;font-weight:600;}
+  .tag.up{background:var(--red-light);color:var(--red);}
+  .tag.down{background:var(--green-light);color:var(--green);}
+  .tag.note{background:var(--amber-light);color:var(--amber);}
+  .tag.flat{background:var(--blue-light);color:var(--blue);}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:10px 0;}
+  .stat-box{background:var(--blue-light);border-radius:10px;padding:10px 12px;}
+  .stat-box .label{font-size:.74rem;color:var(--sub);}
+  .stat-box .val{font-size:1.05rem;font-weight:700;color:var(--ink);}
+  table{width:100%;border-collapse:collapse;font-size:.86rem;background:#fff;border-radius:10px;overflow:hidden;}
+  th,td{padding:9px 10px;border-bottom:1px solid var(--border);text-align:left;}
+  th{background:#eef2fb;font-weight:700;color:var(--ink);font-size:.78rem;}
+  tr:last-child td{border-bottom:none;}
+  .pos{color:var(--red);font-weight:700;}
+  .neg{color:var(--green);font-weight:700;}
+  .warn-box{background:var(--amber-light);border:1px solid #f0d990;border-radius:10px;padding:10px 14px;font-size:.84rem;color:#7a5c00;margin-bottom:12px;}
+  .table-wrap{overflow-x:auto;}
+  .disclaimer{font-size:.78rem;color:var(--sub);margin-top:8px;font-style:italic;}
+  footer{text-align:center;font-size:.78rem;color:var(--sub);padding:24px 16px 40px;}
+  @media (max-width:600px){header h1{font-size:1.25rem;} .sec-title h2{font-size:1.08rem;}}
 </style>
 </head>
 <body>
 
 <header>
   <h1>📊 台灣股市每日資訊看板</h1>
-  <div class="sub">資料更新日期：2026年6月24日（星期三）｜本日為費半重挫、全球科技股拋售衝擊台股開盤的劇烈震盪交易日，部分數據因來源時點不同存在落差，請以即時看盤軟體核對最新報價</div>
+  <div class="meta">
+    <span class="badge">資料日期：2026年6月25日（星期四）</span>
+    <span class="badge">資料時點：盤前 / 前一交易日（6/24）收盤為主</span>
+  </div>
 </header>
 
 <nav>
-  <a href="#news">①今日新聞快訊</a>
-  <a href="#market">②大盤與開盤情況</a>
-  <a href="#hot">③熱門股票一覽</a>
-  <a href="#finance">④財務數據分析</a>
-  <a href="#emerging">⑤新興公司與產業鏈</a>
-  <a href="#jia">⑥Jia 持股分析</a>
-  <a href="#yu">⑦Yu 持股分析</a>
+  <a href="#sec1">①今日新聞快訊</a>
+  <a href="#sec2">②大盤與開盤情況</a>
+  <a href="#sec3">③熱門股票一覽</a>
+  <a href="#sec4">④財務數據分析</a>
+  <a href="#sec5">⑤新興公司與產業鏈</a>
+  <a href="#sec6">⑥Jia的持股分析</a>
+  <a href="#sec7">⑦Yu的持股分析</a>
 </nav>
 
 <main>
 
-<section id="news">
-<h2>① 今日新聞快訊</h2>
+<section id="sec1">
+  <div class="sec-title"><span class="sec-num">1</span><h2>今日新聞快訊</h2></div>
 
-<div class="card">
-<h3><a href="https://udn.com/news/story/7251/9584700" target="_blank">費半崩跌近8%！台積電失守5日線 台股一度暴跌逾千點</a></h3>
-<div class="meta"><span class="tag">聯合新聞網</span><span>2026/06/24</span></div>
-<p>美股費半重挫7.87%、台積電ADR重挫衝擊，台股24日開盤下跌190.67點至46,909.98點，盤中跌勢擴大逾千點，跌破5日線。</p>
-</div>
+  <div class="card">
+    <h3><a href="https://www.cna.com.tw/news/afe/202606240302.aspx" target="_blank">外資狂砍台股1774億寫新高 新台幣重貶1.26角創史上第7大量</a></h3>
+    <div class="src-line">中央社 CNA・2026/06/24</div>
+    <div class="summary">台股6/24終場大跌1,057.05點（-2.24%），收46,043.60點，創史上第八大收盤跌點；外資單日賣超創紀錄達1,774.18億元，新台幣同步重貶收31.751元。</div>
+  </div>
 
-<div class="card">
-<h3><a href="https://udn.com/news/story/6811/9584605" target="_blank">台積電ADR大跌6.7%、日月光跌幅更重 遭AI晶片股拋售潮拖累</a></h3>
-<div class="meta"><span class="tag">聯合新聞網</span><span>2026/06/23（美股盤後，影響24日開盤）</span></div>
-<p>美股AI晶片股全面遭拋售，台積電ADR收挫6.7%至436.39美元，反映過去一年推升大盤的AI買盤出現逆轉訊號。</p>
-</div>
+  <div class="card">
+    <h3><a href="https://tw.stock.yahoo.com/news/%E8%A8%98%E6%86%B6%E9%AB%94%E6%81%90%E4%BE%9B%E9%81%8E%E6%96%BC%E6%B1%82-%E7%BE%8E%E5%85%89%E8%82%A1%E5%83%B9%E6%9A%B4%E8%B7%8C13-2%E4%BB%BD%E5%A0%B1%E5%91%8A%E5%BC%95%E7%88%86%E5%85%A8%E7%90%83%E8%82%A1%E7%81%BD-132400402.html" target="_blank">記憶體恐供過於求！美光股價暴跌13% 2份報告引爆全球股災</a></h3>
+    <div class="src-line">Yahoo奇摩股市・2026/06/24</div>
+    <div class="summary">美光股價暴跌約13%，那斯達克回檔逾5%、費半重挫7.9%，拖累台股記憶體族群（南亞科、華邦電、創見等）多檔跌停；市場聚焦6/25美光財報作為AI熱度試金石。</div>
+  </div>
 
-<div class="card">
-<h3><a href="https://udn.com/news/story/6811/9583726" target="_blank">晶片巨擘暴跌…韓股觸發熔斷暫停交易 收盤重摔10%領跌亞股</a></h3>
-<div class="meta"><span class="tag">聯合新聞網</span><span>2026/06/23</span></div>
-<p>南韓擬對股票、房地產未實現收益課徵綜合稅，三星電子、SK海力士暴跌逾12%，KOSPI觸發熔斷，終場大跌近10%，波及台股開盤情緒。</p>
-</div>
+  <div class="card">
+    <h3><a href="https://www.chinatimes.com/realtimenews/20260624003930-260410" target="_blank">股匯雙殺上演！新台幣逼近31.8元 爆出史上第七大量</a></h3>
+    <div class="src-line">工商時報・2026/06/24</div>
+    <div class="summary">受台股重挫與外資大舉撤出影響，新台幣與台股同步走弱，匯市成交量創史上第七大量，呈現「股匯雙殺」格局。</div>
+  </div>
 
-<div class="card">
-<h3><a href="https://www.ctee.com.tw/news/20260624700740-430201" target="_blank">鴻海與日本SHARP簽署策略合作備忘錄</a></h3>
-<div class="meta"><span class="tag">工商時報</span><span>2026/06/24</span></div>
-<p>鴻海宣布與SHARP簽署策略合作備忘錄，整合製造、供應鏈與品牌通路優勢，聚焦AI基礎設施、機器人自動化、智慧城市等領域合作。</p>
-</div>
-
-<div class="card">
-<h3><a href="https://www.chinatimes.com/realtimenews/20260624001269-260410" target="_blank">夜盤血洗1230點！外資7.6萬口空單創新高</a></h3>
-<div class="meta"><span class="tag">中時新聞網</span><span>2026/06/24</span></div>
-<p>台指期夜盤受美股科技股崩跌牽連重挫逾1,230點，外資台指期空單暴增至76,502口創新高，市場關注是否逼近本輪修正底部。</p>
-</div>
-
-<div class="card">
-<h3><a href="https://www.ctee.com.tw/news/20260624700740-430201" target="_blank">台塑四寶除息行情：台化19分鐘秒填息逾300%</a></h3>
-<div class="meta"><span class="tag">工商時報</span><span>2026/06/24</span></div>
-<p>台化接棒台塑化除息秀，開盤19分鐘即完成填息，填息率達383.33%，台塑、南亞除息行情後續登場。</p>
-</div>
-
-<div class="note">⚠️ 多項數據來源因搜尋時間點不同存在落差（部分顯示6/23終場跌640.86點收47,100.65點，部分顯示6/24開盤再跌190.67點至46,909.98點，期指夜盤另重挫逾千點），整體方向一致：全球科技股拋售潮已實質衝擊台股，請以證交所(twse.com.tw)即時頁面核實當前指數。</div>
+  <div class="card">
+    <h3><a href="https://udn.com/news/story/7255/9586474" target="_blank">靜待美光財報、輝達股東會 台指期夜盤逆勢再走跌</a></h3>
+    <div class="src-line">聯合新聞網・2026/06/24</div>
+    <div class="summary">台指期夜盤在市場等待美光財報與輝達股東會結果之際持續走弱，反映投資人對AI/半導體後續展望保持謹慎；惟美光實際財報公布後優於預期，盤後股價急升逾一成，可能為6/25開盤帶來轉折。</div>
+  </div>
 </section>
 
-<section id="market">
-<h2>② 大盤與開盤情況</h2>
+<section id="sec2">
+  <div class="sec-title"><span class="sec-num">2</span><h2>大盤與開盤情況</h2></div>
 
-<div class="summary-grid">
-  <div class="stat"><div class="label">6/23收盤</div><div class="value neg">47,100.65 (▼640.86)</div></div>
-  <div class="stat"><div class="label">6/24開盤</div><div class="value neg">46,909.98 (▼190.67)</div></div>
-  <div class="stat"><div class="label">台指期夜盤</div><div class="value neg">重挫約1,230點</div></div>
-  <div class="stat"><div class="label">台積電ADR(6/23)</div><div class="value neg">▼6.7% (436.39美元)</div></div>
-</div>
+  <div class="warn-box">⚠️ 本任務於開盤前執行，目前無6/25即時開盤數據，以下以「前一交易日（6/24）收盤」為主，並提供夜盤/美股指引作為開盤前瞻參考。</div>
 
-<div class="card">
-<h3>三大法人買賣超（最近交易日 2026/06/23）</h3>
-<table>
-<tr><th>法人</th><th>買賣超金額</th></tr>
-<tr><td>外資及陸資</td><td class="neg">賣超約385.92億元</td></tr>
-<tr><td>投信</td><td class="pos">買超約72.17~72.36億元</td></tr>
-<tr><td>自營商</td><td class="neg">賣超約169.84億元</td></tr>
-<tr><td><b>合計</b></td><td class="neg"><b>賣超約483.4~483.6億元</b></td></tr>
-</table>
-<p style="margin-top:8px;">台積電盤中曾觸及2,535元天價、加權指數首度突破48,000點創高，隨後反轉重挫，外資現貨賣超之際逆勢大買四大航空股。</p>
-<div class="links-list">來源：<a href="https://www.twse.com.tw/zh/trading/foreign/t86.html" target="_blank">證交所三大法人買賣金額統計表</a> ｜ <a href="https://udn.com/news/story/7251/9583400" target="_blank">聯合新聞網 2026/06/23</a></div>
-</div>
+  <div class="card">
+    <h3>加權指數（6/24收盤）</h3>
+    <div class="stat-grid">
+      <div class="stat-box"><div class="label">收盤指數</div><div class="val">46,043.60</div></div>
+      <div class="stat-box"><div class="label">漲跌</div><div class="val" style="color:var(--green)">-1,057.05（-2.24%）</div></div>
+      <div class="stat-box"><div class="label">成交值</div><div class="val">逾1兆元</div></div>
+      <div class="stat-box"><div class="label">台幣匯率</div><div class="val">31.751（貶1.26角）</div></div>
+    </div>
+    <div class="summary">主因美光財報公布前市場對記憶體供過於求疑慮引發全球科技股賣壓，台積電ADR重挫6.69%、費半重挫7.9%，連動台股創史上第八大收盤跌點。台指期夜盤持續走弱，但美光實際財報優於預期（營收年增約346%），盤後股價急升逾一成，需待開盤後確認台積電ADR與台指期早盤反應是否轉強。</div>
+    <div class="src-line">資料來源：<a href="https://www.cna.com.tw/news/afe/202606240302.aspx" target="_blank">中央社</a>・2026/06/24</div>
+  </div>
 
-<div class="card">
-<h3>美股收盤與亞股連動（6/23，影響6/24開盤）</h3>
-<table>
-<tr><td>費城半導體指數</td><td class="neg">▼7.87%（30檔成分股全黑）</td></tr>
-<tr><td>那斯達克</td><td class="neg">▼2.22%</td></tr>
-<tr><td>標普500</td><td class="neg">▼1.44%</td></tr>
-<tr><td>美光科技</td><td class="neg">▼13.2%</td></tr>
-<tr><td>輝達 / 英特爾</td><td class="neg">▼4.13% / ▼6.14%</td></tr>
-<tr><td>韓股KOSPI</td><td class="neg">熔斷後終場▼近10%</td></tr>
-<tr><td>日股日經225</td><td class="neg">▼逾3%</td></tr>
-</table>
-<p style="margin-top:8px;">台幣匯率近期約於31.3~31.7元區間震盪，6月上旬外資大賣台股期間一度貶至31.698元。今年以來台幣升值幅度仍居亞洲前段班（約4.87%），精確即時匯率請查 <a href="https://rate.bot.com.tw/xrt?Lang=zh-TW" target="_blank">台灣銀行牌告匯率</a>。</p>
-</div>
+  <div class="card">
+    <h3>三大法人買賣超</h3>
+    <table>
+      <tr><th>日期</th><th>外資</th><th>投信</th><th>自營商</th><th>合計</th></tr>
+      <tr><td>6/24</td><td class="neg">賣超1,774.18億元（創紀錄）</td><td>－</td><td>－</td><td class="neg">賣超2,102.38億元</td></tr>
+      <tr><td>6/23</td><td class="neg">賣超385.92億元</td><td class="pos">買超72.36億元</td><td class="neg">賣超169.84億元</td><td class="neg">賣超483.6億元</td></tr>
+    </table>
+    <div class="summary" style="margin-top:8px;">外資連續兩日強力賣超，6/24賣超金額較6/23暴增逾4倍創歷史新高，是推動大盤重挫與台幣貶值的核心動能。</div>
+    <div class="src-line">資料來源：<a href="https://www.cna.com.tw/news/afe/202606240302.aspx" target="_blank">中央社</a>・2026/06/24；<a href="https://www.cna.com.tw/news/afe/202606230194.aspx" target="_blank">中央社</a>・2026/06/23</div>
+  </div>
 </section>
 
-<section id="hot">
-<h2>③ 熱門股票一覽</h2>
-
-<div class="card">
-<h3><a href="https://finance.ettoday.net/news/3188067" target="_blank">友達 (2409)</a></h3>
-<div class="meta"><span class="tag">ETtoday財經雲</span><span>2026/06/24</span></div>
-<p>傳台積電赴中科友達廠區看廠引發資產活化聯想，盤中衝高至33元後急殺翻黑，爆出逾60萬張大量。外資對面板股普遍維持中立評等，目標價約23.5元，短中期評等出現分歧。</p>
-</div>
-
-<div class="card">
-<h3><a href="https://news.pchome.com.tw/finance/nownews/20260622/index-78210531494295207003.html" target="_blank">群創 (3481)</a></h3>
-<div class="meta"><span class="tag">PChome Online新聞</span><span>2026/06/22</span></div>
-<p>跨入FOPLP扇出型封裝+CoPoS玻璃基板題材，6/22爆量83萬張成交稱王，一度衝上18年新高約70.1元；惟面板報價漲勢降溫、法人下半年轉趨保守。</p>
-</div>
-
-<div class="card">
-<h3><a href="https://finance.ettoday.net/news/3188143" target="_blank">南亞科 (2408)</a></h3>
-<div class="meta"><span class="tag">ETtoday財經雲</span><span>2026/06/23</span></div>
-<p>DRAM超級循環帶動營收連7個月創高，但因SK海力士傳放緩HBM4擴產消息，單日重摔跌停，波動劇烈。</p>
-</div>
-
-<div class="card">
-<h3><a href="https://udn.com/news/story/12806/9535529" target="_blank">力積電 (6770)</a></h3>
-<div class="meta"><span class="tag">聯合新聞網</span><span>2026/06</span></div>
-<p>與美光技術交換、DRAM缺貨漲價題材推升，單月股價狂飆逾50%；另傳打入英特爾EMIB先進封裝供應鏈，估值已偏高需留意追高風險。</p>
-</div>
-
-<div class="card">
-<h3><a href="https://money.udn.com/money/story/5607/9483310" target="_blank">信驊 (5274)</a></h3>
-<div class="meta"><span class="tag">經濟日報</span><span>2026/05</span></div>
-<p>台股股王，受惠Agentic AI伺服器/ASIC需求，外資目標價上修至2萬元，Q1 EPS 37.41元創單季新高。</p>
-</div>
-
-<div class="card">
-<h3><a href="https://www.sinotrade.com.tw/richclub/hotstock/%E8%81%AF%E7%99%BC%E7%A7%91-2454-%E5%81%9A%E4%BB%80%E9%BA%BC-%E6%B3%95%E8%AA%AA%E6%9C%89%E4%BD%95%E9%87%8D%E9%BB%9E-1Q26-EPS-15-17%E5%85%83%E5%AD%A3%E5%A2%9E5-4--%E6%AF%9B%E5%88%A9%E7%8E%8746-3--%E8%B2%BB%E7%94%A8%E6%94%B6%E6%96%82%E6%92%90%E4%BD%8F%E7%8D%B2%E5%88%A9-%E8%82%A1%E5%B8%82%E8%A9%B1%E9%A1%8C-69f31ab4b9d44e0086c97b6d" target="_blank">聯發科 (2454)</a></h3>
-<div class="meta"><span class="tag">豐雲學堂</span><span>2026/06</span></div>
-<p>AI ASIC業務點火，1Q26 EPS 15.17元（季增5.4%），毛利率46.3%，法說會後費用收斂撐住獲利，惟4月營收年減4.14%。</p>
-</div>
+<section id="sec3">
+  <div class="sec-title"><span class="sec-num">3</span><h2>熱門股票一覽</h2></div>
+  <div class="card">
+    <div class="summary">台股6/24因費半重挫7.9%、台積電ADR大跌6.69%、美光暴跌13.18%，加權指數單日重挫1,057點。以下為近期成交熱度與新聞熱度最高之個股：</div>
+    <div class="stat-grid" style="margin-top:10px;">
+      <div class="stat-box"><div class="label">台積電 2330</div><div class="val">~2,430元</div></div>
+      <div class="stat-box"><div class="label">鴻海 2317</div><div class="val">~259.5元 ▲1.37%</div></div>
+      <div class="stat-box"><div class="label">廣達 2382</div><div class="val">~371元 ▲0.54%</div></div>
+      <div class="stat-box"><div class="label">緯創 3231</div><div class="val">~159元 ▲1%</div></div>
+      <div class="stat-box"><div class="label">凱基金 2883</div><div class="val">~31元 今年+73%</div></div>
+      <div class="stat-box"><div class="label">南亞科 2408</div><div class="val">高點250元</div></div>
+      <div class="stat-box"><div class="label">日月光 3711</div><div class="val">662元（ADR-8.83%）</div></div>
+      <div class="stat-box"><div class="label">長榮 2603</div><div class="val">~186.5元 ▲1.32%</div></div>
+    </div>
+  </div>
 </section>
 
-<section id="finance">
-<h2>④ 財務數據分析</h2>
-<div class="card">
-<table>
-<tr><th>股票</th><th>股價區間</th><th>近期營收</th><th>EPS</th><th>毛利率</th><th>P/E</th></tr>
-<tr><td>台積電 (2330)</td><td>~2,390~2,535元</td><td>—</td><td>22.08元 (1Q26)</td><td>66.2%</td><td>約27倍</td></tr>
-<tr><td>聯發科 (2454)</td><td>—</td><td>4月467.37億，YoY-4.14%</td><td>15.17元 (1Q26)</td><td>46.3%</td><td>約54.8倍</td></tr>
-<tr><td>友達 (2409)</td><td>~30.1元</td><td>5月238.38億，YoY-1.4%</td><td>Q1 -0.15元</td><td>11.9%</td><td>~75-97倍</td></tr>
-<tr><td>群創 (3481)</td><td>~66~70元</td><td>5月206.48億，YoY+10.28%</td><td>Q1 0.2元，YoY+67%</td><td>—</td><td>~30倍+</td></tr>
-<tr><td>南亞科 (2408)</td><td>~405~454.5元</td><td>5月276.7億，YoY+730%</td><td>Q1 8.41元，YoY+1435%</td><td>67.87%</td><td>—</td></tr>
-<tr><td>力積電 (6770)</td><td>~81.6~88.7元</td><td>5月57.70億，YoY+58.86%</td><td>Q1 3.36元（由虧轉盈）</td><td>—</td><td>~42-46倍</td></tr>
-<tr><td>信驊 (5274)</td><td>~19,275元</td><td>5月12.82億，YoY+68.74%</td><td>Q1 37.41元，YoY+59%</td><td>—</td><td>—</td></tr>
-</table>
-<div class="note">資料來源：豐雲學堂、鉅亨網、ETtoday財經雲、聯合新聞網。詳細財報數字建議以 <a href="https://mops.twse.com.tw" target="_blank">公開資訊觀測站</a> 及 <a href="https://www.wantgoo.com" target="_blank">財報狗</a> 最新公告覆核。</div>
-</div>
+<section id="sec4">
+  <div class="sec-title"><span class="sec-num">4</span><h2>財務數據分析</h2></div>
+  <div class="table-wrap">
+  <table>
+    <tr><th>股票</th><th>營收/成長</th><th>EPS</th><th>毛利率</th><th>P/E</th><th>P/B</th><th>亮點／利空</th></tr>
+    <tr><td>台積電 2330</td><td>Q1約1兆1,341億元</td><td>22.08元</td><td>65.5~67.5%</td><td>32~33倍</td><td>8.15倍</td><td>外資喊目標價上看2,600~3,030元，但ADR遭拋售潮拖累重挫6.69%</td></tr>
+    <tr><td>鴻海 2317</td><td>5月859.41億元，年增39.57%</td><td>－</td><td>－</td><td>－</td><td>－</td><td>"老AI"伺服器族群補漲領頭，外資籌碼回補</td></tr>
+    <tr><td>廣達 2382</td><td>5月3,114.81億元，年增94.38%</td><td>~26.3元</td><td>－</td><td>11.4~18.6倍</td><td>6.92倍</td><td>GB300放量出貨，但股價淨值比偏高面臨修正風險</td></tr>
+    <tr><td>緯創 3231</td><td>－</td><td>預估13.71元（上修）</td><td>5.21%</td><td>15.71倍</td><td>4.38倍</td><td>輝達GPU供應鏈低估值標的，FactSet目標價203元</td></tr>
+    <tr><td>凱基金 2883</td><td>4月134.67億元，月增147.27%</td><td>Q1 0.69元</td><td>－</td><td>－</td><td>－</td><td>壽險FVOCI股票處分收益爆發，目標價上修至35元</td></tr>
+    <tr><td>南亞科 2408</td><td>－</td><td>Q1約7.46元</td><td>快速回升</td><td>－</td><td>－</td><td>DDR4/DDR5價格大漲，惟6/25美光重返DDR4市場消息致表現轉弱</td></tr>
+    <tr><td>日月光 3711</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td><td>ADR重挫8.83%，遭半導體族群連帶拋售</td></tr>
+    <tr><td>長榮 2603</td><td>2025年3,790.69億元</td><td>2025年31.68元</td><td>－</td><td>~8.44倍</td><td>－</td><td>淨現金資產避險吸引力，殖利率約6.75%，外資轉向買進</td></tr>
+  </table>
+  </div>
+  <div class="disclaimer">資料來源詳見各區塊新聞連結；個股數字取自新聞發布時點，與即時報價可能有落差。</div>
 </section>
 
-<section id="emerging">
-<h2>⑤ 新興公司與產業鏈知識</h2>
+<section id="sec5">
+  <div class="sec-title"><span class="sec-num">5</span><h2>新興公司與產業鏈知識</h2></div>
 
-<div class="card">
-<h3>昇達科 (3491)｜低軌衛星通訊酬載供應鏈黑馬</h3>
-<p><b>公司介紹：</b>原為傳統微波通訊元件廠，轉型切入低軌衛星（LEO）通訊酬載關鍵零組件，低軌衛星相關營收占比已衝高至約60-80%。</p>
-<p><b>為何值得關注：</b>傳SpaceX低調組團訪台，重點鎖定昇達科及華通，擴大下單因應衛星升級需求；股價漲幅已大，需留意客戶集中度與認證進度風險。</p>
-<p><b>產業鏈知識：</b>低軌衛星產業上游是衛星本體製造與發射服務（SpaceX、Kuiper），中游是衛星端通訊元件與電路板整合（昇達科做射頻酬載元件，相當於衛星的「耳朵和嘴巴」；華通做衛星PCB），下游是地面接收端（啟碁做天線與路由器）。台廠優勢在精密製造與射頻設計，正逐步打入衛星供應鏈。</p>
-<div class="links-list">來源：<a href="https://news.cnyes.com/news/id/6416748" target="_blank">鉅亨網 2026年Q1</a> ｜ <a href="https://www.sinotrade.com.tw/richclub/hotstock/SpaceX%E4%BD%8E%E8%AA%BF%E8%A8%AA%E5%8F%B0%E6%93%B4%E5%A4%A7%E4%B8%8B%E5%96%AE-%E6%98%87%E9%81%94%E7%A7%91-%E8%8F%AF%E9%80%9A%E6%88%90%E9%87%8D%E9%BB%9E%E5%B0%8D%E8%B1%A1-%E5%8F%B0%E5%BB%A0%E5%A4%AA%E7%A9%BA%E4%BE%9B%E6%87%89%E9%8F%88%E5%85%A8%E8%A7%A3%E6%9E%90-%E8%82%A1%E5%B8%82%E8%A9%B1%E9%A1%8C-69733dea69e5022612a7aa66" target="_blank">豐雲學堂 2026/06</a></div>
-</div>
+  <div class="card">
+    <h3><a href="https://www.sinotrade.com.tw/richclub/hotstock/%E6%98%87%E9%81%94%E7%A7%91--3491--%E5%81%9A%E4%BB%80%E9%BA%BC-%E6%B3%95%E8%AA%AA%E9%87%8D%E9%BB%9E%E6%9C%89%E5%93%AA%E4%BA%9B-%E4%BD%8E%E8%BB%8C%E8%A1%9B%E6%98%9F%E9%A9%85%E5%8B%95%E7%87%9F%E6%94%B6%E5%AD%A3%E5%AD%A3%E6%96%B0%E9%AB%98-2026%E5%B9%B4%E9%AB%98%E6%88%90%E9%95%B7%E5%85%83%E5%B9%B4%E6%AD%A3%E5%BC%8F%E5%B1%95%E9%96%8B-%E8%82%A1%E5%B8%82%E8%A9%B1%E9%A1%8C-69f06cf01c8eb32cf038bb0a" target="_blank">昇達科（3491）— 低軌衛星通訊模組廠</a></h3>
+    <div class="src-line">豐雲學堂・2026/06；參考 <a href="https://news.cnyes.com/news/id/6319170" target="_blank">鉅亨網 2026/05</a></div>
+    <div class="summary"><b>產業科普：</b>低軌衛星距地表300~1500公里，訊號延遲短、建置成本低（如SpaceX Starlink）。產業鏈上游為射頻晶片／特殊材料，中游是昇達科這類廠商生產微波元件、相位陣列天線、光鏈路通訊（OISL）模組，下游為衛星系統整合商與電信營運商。<br><b>亮點：</b>2026 Q1營收10.2億元年增64.5%，低軌衛星佔比達80%，手上訂單18億元；全年營收預估較2025年成長近90%，毛利率58%。SpaceX史上最大IPO計畫消息也帶動相關概念股關注。</div>
+  </div>
 
-<div class="card">
-<h3>千附精密 (6829)｜傳統機械轉型量子運算設備</h3>
-<p><b>公司介紹：</b>原深耕航太、半導體精密製造，2026年3月切入全球量子產業供應鏈，亞太區首家出貨「絕對溫度」等級超低溫量子設備系統。</p>
-<p><b>為何值得關注：</b>2026/3/27宣布完成新世代超低溫量子設備系統交付；3月營收2.81億元、年增107%創新高，訂單能見度看到Q3。</p>
-<p><b>產業鏈知識：</b>量子電腦需在接近絕對零度的環境運作以避免量子位元失真。產業鏈分為上游量子晶片設計（IBM、Google主導），中游低溫真空與控制設備（千附精密切入，技術門檻不亞於半導體設備），下游系統整合與雲端平台。台廠的定位是把既有半導體封裝、低溫控制技術轉化為供應鏈零件角色，量子商業化普遍預期2030年前後才放量。</p>
-<div class="links-list">來源：<a href="https://www.ctee.com.tw/news/20260327702082-430503" target="_blank">工商時報 2026/03/27</a> ｜ <a href="https://www.moneyweekly.com.tw/ArticleData/Info/Article/217702" target="_blank">理財周刊</a></div>
-</div>
+  <div class="card">
+    <h3><a href="https://m.cnyes.com/news/id/6485743" target="_blank">聯亞（3081）— AI資料中心光通訊模組廠（矽光子/CPO概念）</a></h3>
+    <div class="src-line">鉅亨網・2026/06</div>
+    <div class="summary"><b>產業科普：</b>矽光子是把雷射光訊號整合進晶片製程，用「光」取代「電」傳輸資料，速度更快更省電；CPO（共同封裝光學）則把光通訊元件直接封裝在交換器晶片旁，是解決AI伺服器間資料塞車的關鍵技術。<br><b>亮點：</b>由電信光通訊轉向AI資料中心高階光模組（800G/1.6T），5月營收4.05億元年增118.84%，1-5月累計年增107.11%；2026年被視為CPO「商轉元年」，輝達GTC宣布CPO交換器量產帶動供應鏈關注。</div>
+  </div>
 
-<div class="card">
-<h3>廣宇 (2328)｜線束廠轉型人形機器人關鍵零組件</h3>
-<p><b>公司介紹：</b>原為鴻海集團旗下傳統線束公司，2026年1月與鴻海共同投資比利時新創Magnax BV，廣宇單獨持股37.28%成最大股東。</p>
-<p><b>為何值得關注：</b>人形機器人需模仿人體約40-50個關節運動，Magnax的「無軛軸向磁通電機」功率密度高且輕薄，廣宇提出「3S戰略」目標2030年拿下全球5%市占。</p>
-<p><b>產業鏈知識：</b>機器人核心供應鏈上游是驅動本體（馬達、減速器，技術門檻最高，同類台廠包括上銀做諧波減速機、和大做行星減速機），中游是關節模組整合，下游是整機組裝與品牌（特斯拉Optimus、波士頓動力）。廣宇目前仍屬早期布局階段。</p>
-<div class="links-list">來源：<a href="https://www.storm.mg/article/11097007" target="_blank">風傳媒</a> ｜ <a href="https://news.cnyes.com/news/id/6316583" target="_blank">鉅亨網</a></div>
-</div>
+  <div class="card">
+    <h3><a href="https://tw.stock.yahoo.com/news/%E5%82%B3%E7%B5%B1%E7%94%A2%E6%A5%AD%E6%89%93%E5%85%A5ai%E4%BE%9B%E6%87%89%E8%BD%89%E5%9E%8B-%E8%AC%9D%E9%87%91%E6%B2%B3%E8%88%89%E4%BE%8B-%E9%80%996%E5%AE%B6%E5%8F%B0%E5%BB%A0-%E4%BC%81%E6%A5%AD%E9%9C%80%E5%BE%9E%E5%89%B5%E6%96%B0%E5%8D%87%E7%B4%9A%E6%89%BE%E5%87%BA%E8%B7%AF-231500251.html" target="_blank">高明鐵（4573）— 傳統鐵工廠轉型矽光子線性模組供應商</a></h3>
+    <div class="src-line">Yahoo股市・2026/06；參考 <a href="https://statementdog.com/analysis/4573" target="_blank">財報狗</a></div>
+    <div class="summary"><b>產業科普：</b>矽光子設備需要極高精度的光學元件對位（誤差須在微米等級），原本做精密線性傳動模組（滑軌系統）的高明鐵，技術剛好能切入此供應鏈，扮演「賦能者」角色。<br><b>亮點：</b>2026年5月營收創新高年增207%，前五月累計營收逼近去年全年總額；與中砂、頌勝科技、山太士並列財經媒體點名的「傳統產業搭上AI浪潮」轉型典範股，屬相對冷門但已有實際營收驗證的標的。</div>
+  </div>
 </section>
 
-<section id="jia">
-<h2>⑥ Jia 的持股分析</h2>
-<div class="card">
-<table>
-<tr><th>代號</th><th>名稱</th><th>持股</th><th>成本</th><th>現價</th><th>損益</th><th>損益%</th><th>目標價</th><th>建議</th></tr>
-<tr><td>0050</td><td>元大台灣50</td><td>6,000</td><td>46.23</td><td>~107.7~110.1</td><td class="pos">+368,520~383,220</td><td class="pos">+133~138%</td><td>無個別目標價</td><td><span class="badge-hold">持有</span></td></tr>
-<tr><td>0056</td><td>元大高股息</td><td>3,000</td><td>34.13</td><td>~52.85~54.05</td><td class="pos">+56,160~59,760</td><td class="pos">+55~58%</td><td>無個別目標價（殖利率約10.3%）</td><td><span class="badge-hold">持有（領息為主）</span></td></tr>
-<tr><td>2330</td><td>台積電</td><td>150</td><td>29.84</td><td>~2,390~2,430</td><td class="pos">+359,000~360,000</td><td class="pos">約+8,000%</td><td>約2,330~3,030元（外資）</td><td><span class="badge-hold">持有/逢低小幅加碼</span></td></tr>
-<tr><td>00981A</td><td>主動統一台股增長</td><td>1,000</td><td>2118.01*</td><td>~31.60</td><td class="neg">依原始成本約-2,086,410*</td><td class="neg">約-98.5%*</td><td>無個別目標價（主動式ETF）</td><td><span class="badge-hold">持有（需核實成本價）</span></td></tr>
-<tr><td>3231</td><td>緯創</td><td>1,000</td><td>166.24</td><td>~156.5~158.0</td><td class="neg">-8,240~9,740</td><td class="neg">約-5~6%</td><td>約195~240元（法人）</td><td><span class="badge-buy">持有，回落至成本附近可加碼</span></td></tr>
-</table>
-<div class="note">*00981A成本價2,118.01元與該ETF實際股價區間（掛牌淨值10元、最高約32元）嚴重不符，極可能是記錄輸入誤差，建議核對原始交易紀錄；損益數字僅供參考。各股現價因搜尋來源時間點不同存在區間落差，已列出範圍，請以即時看盤軟體核對精確報價。</div>
-<p style="font-size:0.85rem;color:var(--muted)">2330目標價來源：里昂3,030元、花旗2,875元、野村2,820元、滙豐2,800元、摩根士丹利2,588元、摩根大通2,400元 — <a href="https://news.cnyes.com/news/id/6300881" target="_blank">鉅亨網2026/04</a>。3231目標價來源：<a href="https://wantrich.chinatimes.com/news/20260603900680-420101" target="_blank">老牌投顧2026/06/03上修至240元</a>、<a href="https://today.line.me/tw/v3/article/7N1Zg7J" target="_blank">FactSet調查2026/06</a>。</p>
-<p style="font-size:0.8rem;color:var(--muted)">以上「加碼／持有／減碼／賣出」判斷僅為公開資料整理之參考意見，非投資建議，不構成任何買賣邀約。</p>
-</div>
+<section id="sec6">
+  <div class="sec-title"><span class="sec-num">6</span><h2>Jia 的持股分析</h2></div>
+
+  <div class="warn-box">⚠️ 資料異常提示：2330（成本29.84元）與00981A（成本2118.01元）之平均成本價與目前股價／淨值區間差距過大，極可能為輸入錯誤（單位或檔案混淆），下表仍依CSV原始數值計算，建議您覆核並更新正確成本價。</div>
+
+  <div class="table-wrap">
+  <table>
+    <tr><th>代號</th><th>名稱</th><th>持股</th><th>成本</th><th>現價(日期)</th><th>未實現損益</th><th>目標價</th><th>操作建議</th></tr>
+    <tr><td>0050</td><td>元大台灣50</td><td>6,000</td><td>46.23</td><td>107.15（6/24）</td><td class="pos">+365,520元 / +131.76%</td><td>無（ETF追蹤指數）</td><td>持有/可逢低加碼</td></tr>
+    <tr><td>0056</td><td>元大高股息</td><td>3,000</td><td>34.13</td><td>53.15（6/24）</td><td class="pos">+57,060元 / +55.73%</td><td>無（ETF追蹤指數）</td><td>持有，續抱領息</td></tr>
+    <tr><td>2330</td><td>台積電</td><td>150</td><td>29.84⚠️</td><td>2,430（6/24）</td><td class="pos">+360,024元 / +8043.5%⚠️</td><td>2,600~3,030元（外資）</td><td>持有，成本價請覆核</td></tr>
+    <tr><td>00981A</td><td>主動統一台股增長</td><td>1,000</td><td>2118.01⚠️</td><td>31.48（6/24）</td><td class="neg">-2,086,530元⚠️</td><td>無（主動式ETF）</td><td>持有觀察，成本價請覆核</td></tr>
+    <tr><td>3231</td><td>緯創</td><td>1,000</td><td>166.24</td><td>157.5（6/24）</td><td class="neg">-8,740元 / -5.26%</td><td>203元（FactSet）</td><td>持有，目標價高於現價</td></tr>
+  </table>
+  </div>
+  <div class="disclaimer">資料來源：<a href="https://tw.stock.yahoo.com/quote/0050.TW" target="_blank">Yahoo股市</a>、<a href="https://today.line.me/tw/v3/article/7N1Zg7J" target="_blank">鉅亨網/LINE TODAY（緯創目標價）</a>。以上僅為資訊整理，非投資建議。</div>
 </section>
 
-<section id="yu">
-<h2>⑦ Yu 的持股分析</h2>
-<div class="card">
-<table>
-<tr><th>代號</th><th>名稱</th><th>持股</th><th>成本</th><th>現價</th><th>損益</th><th>損益%</th><th>目標價</th><th>建議</th></tr>
-<tr><td>0050</td><td>元大台灣50</td><td>1,000</td><td>69.6</td><td>~107.7~110.1</td><td class="pos">+38,050~40,500</td><td class="pos">+55~58%</td><td>無公開目標價</td><td><span class="badge-hold">持有</span></td></tr>
-<tr><td>0052</td><td>富邦科技</td><td>1,000</td><td>59.08</td><td>~63.1~65.25</td><td class="pos">+4,020~6,170</td><td class="pos">+7~10%</td><td>無公開目標價</td><td><span class="badge-hold">持有</span></td></tr>
-<tr><td>0056</td><td>元大高股息</td><td>13,000</td><td>35.4</td><td>~53.15~54.05</td><td class="pos">+230,750~242,450</td><td class="pos">+50~53%</td><td>無公開目標價（殖利率約10.3%）</td><td><span class="badge-hold">持有（領息為主）</span></td></tr>
-<tr><td>00981A</td><td>主動統一台股增長</td><td>4,000</td><td>29.03</td><td>~31.5~31.6</td><td class="pos">+9,880~10,280</td><td class="pos">+8.5~8.9%</td><td>無公開目標價</td><td><span class="badge-hold">持有</span></td></tr>
-<tr><td>2002</td><td>中鋼</td><td>5,000</td><td>22.17</td><td>~19.30</td><td class="neg">-14,350</td><td class="neg">-12.9%</td><td>約22元（FactSet中值）</td><td><span class="badge-hold">持有，鋼價築底中</span></td></tr>
-<tr><td>2308</td><td>台達電</td><td>70</td><td>2062.9</td><td>~1,990~2,000</td><td class="neg">-4,400~5,100</td><td class="neg">約-3%</td><td>約2,200~2,800元（法人）</td><td><span class="badge-buy">持有/加碼</span></td></tr>
-<tr><td>2646</td><td>星宇航空</td><td>2,387</td><td>19.7</td><td>~21.70</td><td class="pos">+4,774~4,786</td><td class="pos">+10.2%</td><td>無公開目標價</td><td><span class="badge-hold">持有</span></td></tr>
-<tr><td>2330</td><td>台積電</td><td>580</td><td>1755.59</td><td>~2,390~2,430</td><td class="pos">+388,000~391,000</td><td class="pos">+38~38.4%</td><td>約2,330~3,030元（外資）</td><td><span class="badge-hold">持有</span></td></tr>
-<tr><td>4927</td><td>泰鼎-KY</td><td>9,000</td><td>50.78</td><td>~51.1~51.3</td><td class="pos">+2,880~4,680</td><td class="pos">+0.6~1%</td><td>無公開目標價</td><td><span class="badge-sell">減碼</span></td></tr>
-</table>
-<div class="note">各股現價因搜尋來源時間點不同存在小幅區間落差，已列出範圍，請以即時看盤軟體核對精確報價。泰鼎-KY基本面持續惡化（1Q26 EPS -3.1元，年減131%轉虧，4月營收年減11.09%），雖帳面微幅獲利，建議重新評估持股理由。</div>
-<p style="font-size:0.85rem;color:var(--muted)">2002目標價來源：<a href="https://news.cnyes.com/news/id/6446025" target="_blank">鉅亨網FactSet調查 2026/05</a>。2308目標價來源：<a href="https://cmnews.com.tw/article/newsyoudeservetoknow-930a6df6-4777-11f1-8e9e-3d579fa396bb" target="_blank">CMoney 2026/06</a>。</p>
-<p style="font-size:0.8rem;color:var(--muted)">以上「加碼／持有／減碼／賣出」判斷僅為公開資料整理之參考意見，非投資建議，不構成任何買賣邀約。</p>
-</div>
+<section id="sec7">
+  <div class="sec-title"><span class="sec-num">7</span><h2>Yu 的持股分析</h2></div>
+
+  <div class="table-wrap">
+  <table>
+    <tr><th>代號</th><th>名稱</th><th>持股</th><th>成本</th><th>現價(日期)</th><th>未實現損益</th><th>目標價</th><th>操作建議</th></tr>
+    <tr><td>0050</td><td>元大台灣50</td><td>1,000</td><td>69.6</td><td>107.15（6/24）</td><td class="pos">+37,550元 / +53.96%</td><td>無（ETF）</td><td>持有</td></tr>
+    <tr><td>0052</td><td>富邦科技</td><td>1,000</td><td>59.08</td><td>63.10（6/24）</td><td class="pos">+4,020元 / +6.80%</td><td>無（ETF）</td><td>持有</td></tr>
+    <tr><td>0056</td><td>元大高股息</td><td>13,000</td><td>35.4</td><td>52.85（6/24）</td><td class="pos">+226,850元 / +49.29%</td><td>無（ETF）</td><td>持有，可分批獲利了結部分</td></tr>
+    <tr><td>00981A</td><td>主動統一台股增長</td><td>4,000</td><td>29.03</td><td>31.60（6/23）</td><td class="pos">+10,280元 / +8.85%</td><td>無（主動式ETF）</td><td>持有觀察</td></tr>
+    <tr><td>2002</td><td>中鋼</td><td>5,000</td><td>22.17</td><td>19.35（6/24）</td><td class="neg">-14,100元 / -12.72%</td><td>20~22元</td><td>持有觀望，上漲空間有限</td></tr>
+    <tr><td>2308</td><td>台達電</td><td>70</td><td>2062.9</td><td>2,000（6/24）</td><td class="neg">-4,403元 / -3.05%</td><td>2,200~2,440元</td><td>持有/小幅加碼可考慮</td></tr>
+    <tr><td>2646</td><td>星宇航空</td><td>2,387</td><td>19.7</td><td>21.70（6/24）</td><td class="pos">+4,774元 / +10.15%</td><td>無公開資料</td><td>持有，留意機隊擴張成本壓力</td></tr>
+    <tr><td>2330</td><td>台積電</td><td>580</td><td>1755.59</td><td>2,430（6/24）</td><td class="pos">+391,257.8元 / +38.42%</td><td>2,600~3,030元</td><td>持有，核心持股可續抱</td></tr>
+    <tr><td>4927</td><td>泰鼎-KY</td><td>9,000</td><td>50.78</td><td>48.55（6/24）</td><td class="neg">-20,070元 / -4.39%</td><td>80元（樂觀情境）</td><td>減碼/觀望，營收持續衰退</td></tr>
+  </table>
+  </div>
+  <div class="stat-grid" style="margin-top:10px;">
+    <div class="stat-box"><div class="label">總未實現損益</div><div class="val pos">約 +636,158.8元</div></div>
+    <div class="stat-box"><div class="label">獲利持股</div><div class="val">6檔</div></div>
+    <div class="stat-box"><div class="label">虧損持股</div><div class="val">3檔（中鋼、台達電、泰鼎-KY）</div></div>
+  </div>
+  <div class="disclaimer">資料來源：<a href="https://tw.stock.yahoo.com/quote/2330.TW" target="_blank">Yahoo股市</a>、<a href="https://news.cnyes.com/news/id/6458203" target="_blank">cnyes（中鋼目標價）</a>、<a href="https://goodinfo.tw/tw/StockDetail.asp?STOCK_ID=2308" target="_blank">Goodinfo（台達電）</a>等，詳見各股新聞連結。以上僅為資訊整理，非投資建議。</div>
 </section>
 
 </main>
 
-<div class="disclaimer">
-本看板內容由AI整理自公開新聞與市場資料，數據可能因來源時間點不同而存在落差，僅供參考，不構成投資建議。投資前請自行查證並評估風險。<br>
-產生時間：2026/06/24
-</div>
+<footer>
+  台灣股市每日資訊看板 · 自動產生於 2026-06-25 · 資料僅供參考，不構成投資建議
+</footer>
 
 </body>
 </html>
