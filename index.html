@@ -1,1 +1,475 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台灣股市每日資訊看板 2026-10-09</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#ffffff; --ink:#1a2233; --sub:#5b6477;
+    --accent:#0f62fe; --green:#16a34a; --red:#dc2626; --amber:#d97706;
+    --border:#e6e9f0; --shadow:0 2px 10px rgba(20,30,60,0.06);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.55;
+  }
+  header{
+    background:linear-gradient(135deg,#0f62fe 0%,#0a3fae 100%); color:#fff;
+    padding:28px 20px 20px; position:relative;
+  }
+  header h1{margin:0 0 6px; font-size:1.6rem; font-weight:700;}
+  header .meta{font-size:0.92rem; opacity:0.92;}
+  header .badge{
+    display:inline-block; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35);
+    border-radius:20px; padding:3px 12px; font-size:0.82rem; margin-top:8px;
+  }
+  nav{
+    background:#fff; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:50;
+    box-shadow:var(--shadow); overflow-x:auto; white-space:nowrap;
+  }
+  nav a{
+    display:inline-block; padding:12px 16px; color:var(--sub); text-decoration:none;
+    font-size:0.88rem; font-weight:600; border-bottom:3px solid transparent;
+  }
+  nav a:hover{color:var(--accent); border-bottom-color:var(--accent);}
+  main{max-width:1080px; margin:0 auto; padding:20px 16px 60px;}
+  section{margin-bottom:36px; scroll-margin-top:54px;}
+  section h2{
+    font-size:1.25rem; margin:0 0 4px; padding-bottom:8px; border-bottom:2px solid var(--accent);
+    display:flex; align-items:center; gap:8px;
+  }
+  section .section-note{font-size:0.82rem; color:var(--sub); margin:6px 0 14px;}
+  .card{
+    background:var(--card); border:1px solid var(--border); border-radius:12px;
+    padding:16px 18px; margin-bottom:12px; box-shadow:var(--shadow);
+  }
+  .card h3{margin:0 0 6px; font-size:1.02rem;}
+  .card h3 a{color:var(--ink); text-decoration:none;}
+  .card h3 a:hover{color:var(--accent); text-decoration:underline;}
+  .source-line{font-size:0.78rem; color:var(--sub); margin-bottom:8px;}
+  .source-line .src{color:var(--accent); font-weight:600;}
+  .summary{font-size:0.92rem; color:#333;}
+  .tag{
+    display:inline-block; font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:5px;
+    margin-right:6px; vertical-align:middle;
+  }
+  .tag.up{background:#fdecec; color:var(--red);}
+  .tag.down{background:#e9f7ef; color:var(--green);}
+  .tag.flat{background:#f1f1f1; color:var(--sub);}
+  table{width:100%; border-collapse:collapse; font-size:0.85rem; background:#fff;}
+  table th, table td{padding:9px 10px; border-bottom:1px solid var(--border); text-align:left;}
+  table th{background:#f7f9fc; font-weight:700; color:var(--sub); font-size:0.78rem; text-transform:uppercase;}
+  table tr:hover{background:#fafbfd;}
+  .pos{color:var(--red); font-weight:700;}
+  .neg{color:var(--green); font-weight:700;}
+  .pill{
+    display:inline-block; padding:2px 9px; border-radius:12px; font-size:0.76rem; font-weight:700;
+  }
+  .pill.buy{background:#fdecec; color:var(--red);}
+  .pill.hold{background:#eef2ff; color:var(--accent);}
+  .pill.trim{background:#fff7e6; color:var(--amber);}
+  .pill.sell{background:#e9f7ef; color:var(--green);}
+  .grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:10px; margin-top:10px;}
+  .stat{background:#f7f9fc; border-radius:8px; padding:10px 12px;}
+  .stat .label{font-size:0.74rem; color:var(--sub);}
+  .stat .value{font-size:1.05rem; font-weight:700;}
+  .warn{
+    background:#fff7e6; border:1px solid #f3d8a3; border-radius:8px; padding:10px 12px;
+    font-size:0.82rem; color:#8a5a00; margin-top:8px;
+  }
+  .disclaimer{
+    font-size:0.78rem; color:var(--sub); text-align:center; margin-top:40px; padding-top:16px;
+    border-top:1px solid var(--border);
+  }
+  .scroll-x{overflow-x:auto;}
+  a.link{color:var(--accent); text-decoration:none; word-break:break-all;}
+  a.link:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📊 台灣股市每日資訊看板</h1>
+  <div class="meta">資料更新日期：2026-10-09（星期五）</div>
+  <span class="badge">今日休市（10/10國慶日補假），資料採最近交易日(2026-10-08)收盤數據</span>
+</header>
+
+<nav>
+  <a href="#news">①今日新聞快訊</a>
+  <a href="#market">②大盤與開盤情況</a>
+  <a href="#hotstocks">③熱門股票一覽</a>
+  <a href="#financials">④財務數據分析</a>
+  <a href="#emerging">⑤新興公司與產業鏈</a>
+  <a href="#jia">⑥Jia 持股分析</a>
+  <a href="#yu">⑦Yu 持股分析</a>
+</nav>
+
+<main>
+
+<section id="news">
+  <h2>① 今日新聞快訊</h2>
+<div class="card">
+  <h3><a class="link" href="https://www.cna.com.tw/news/afe/202610090024.aspx" target="_blank" rel="noopener">告別便宜新台幣時代？銀行掀LCR防衛戰 央行調降存單標售規模</a></h3>
+  <p class="source-line">中央社 <span class="src">cna.com.tw</span> · 2026-10-09 08:47</p>
+  <p class="summary">AI熱潮帶動科技廠擴產與股市資金需求升溫，多家銀行調整存放款利率，AI聯貸大案利率已從2%以下升至約2.3%至2.5%；金管會數據顯示8月底國銀平均流動性覆蓋比率（LCR）為120.57%，銀行紛推高利定存爭取大戶存款以提高LCR。央行同時調降364天期存單標售規模，適度釋放市場流動性。</p>
+</div>
+
+<div class="card">
+  <h3><a class="link" href="https://www.mitrade.com/cn/insights/more-analysis/morning/20261009B01" target="_blank" rel="noopener">中東緊張牽動美股 那指挫1.25%、英偉達跌近3%，川普稱選前不襲伊朗</a></h3>
+  <p class="source-line">Mitrade投資慧眼 <span class="src">mitrade.com</span> · 2026-10-09</p>
+  <p class="summary">也門胡塞武裝升級對沙特襲擊，市場擔憂曼德海峽、荷姆茲海峽航運安全，WTI原油一度漲近5%至93.2美元；川普隨後表示中期選舉前不會襲擊伊朗，油價回落至91美元附近。美股那斯達克挫1.25%、標普500跌0.47%，NVIDIA跌2.9%、甲骨文跌逾5%，AI獲利疑慮再起，日經225早盤同步跌逾1%，亞股氣氛承壓。</p>
+</div>
+
+<div class="card">
+  <h3><a class="link" href="https://www.moneyweekly.com.tw/ArticleData/Info/Article/254322" target="_blank" rel="noopener">雙十封關台股重挫近500點！台積電9月營收罕見月減，川湖連兩日跌停引爆AI股恐慌</a></h3>
+  <p class="source-line">理財周刊 <span class="src">moneyweekly.com.tw</span> · 2026-10-08 14:32</p>
+  <p class="summary">台積電9月合併營收5,118.57億元、月減0.6%，中止連續創高紀錄，但年增54.6%仍創同期新高；第三季營收季增17.6%創單季新高。受川湖(2059)第三季展望不如外資預期連兩日跌停引爆AI股估值恐慌，加上美債殖利率走高、聯準會偏鷹，台股連假前最終收跌492.93點至49,313.44點，台積電跌35元獨自影響指數約277點。</p>
+</div>
+</section>
+
+<section id="market">
+  <h2>② 大盤與開盤情況</h2>
+<div class="card">
+  <h3>加權指數概況 <span class="tag down">下跌</span></h3>
+  <p class="source-line">中央社 <span class="src">cna.com.tw</span> · 2026-10-08 13:48（10/8 15:19更新）</p>
+  <div class="grid2">
+    <div class="stat"><div class="label">開盤價（10/8）</div><div class="value">49,783.06</div></div>
+    <div class="stat"><div class="label">收盤指數（10/8，約13:48）</div><div class="value">49,313.44</div></div>
+    <div class="stat"><div class="label">漲跌點數</div><div class="value neg">-492.93</div></div>
+    <div class="stat"><div class="label">漲跌幅</div><div class="value neg">-0.99%</div></div>
+    <div class="stat"><div class="label">累計成交值（10/8）</div><div class="value">8,696.96億元</div></div>
+    <div class="stat"><div class="label">新台幣兌美元（10/8收盤）</div><div class="value">31.875（貶0.08元）</div></div>
+  </div>
+  <p class="summary">台股於雙十連假前最後交易日（10/8）開平走低，盤中一度重挫逾600點至49,189.77點，終場收跌492.93點，台積電（2330）跌35元單檔影響指數約277點。中東（也門胡塞武裝、荷姆茲海峽）局勢升溫及美債殖利率走高，推升避險情緒，外資賣超壓力同步拖累新台幣走貶。</p>
+  <div class="warn">今日（2026-10-09）台灣證交所與櫃買中心因國慶日（10/10）適逢週六、順延補假而休市，無盤中交易資料。以下為前一交易日（2026-10-08）收盤數據，下一個交易日為2026-10-12。</div>
+</div>
+
+<div class="card">
+  <h3>三大法人買賣超（最近一個交易日：2026-10-08收盤後公布）</h3>
+  <p class="source-line">中央社 <span class="src">cna.com.tw</span> · 2026-10-08 15:15</p>
+  <div class="grid2">
+    <div class="stat"><div class="label">外資及陸資</div><div class="value neg">賣超758.52億元</div></div>
+    <div class="stat"><div class="label">投信</div><div class="value pos">買超46.88億元</div></div>
+    <div class="stat"><div class="label">自營商</div><div class="value neg">賣超187.31億元</div></div>
+    <div class="stat"><div class="label">三大法人合計</div><div class="value neg">賣超898.95億元</div></div>
+  </div>
+  <p class="summary">外資及陸資單日賣超758.52億元，為今年罕見的單日大額賣壓，主要在雙十連假前獲利了結並反映中東地緣政治避險需求；投信逆勢小幅買超46.88億元，三大法人合計賣超898.95億元，寫下近期新高賣壓。</p>
+  <div class="warn">此為10/8（上一交易日）收盤後公布之法人買賣超數據；今日（10/9）休市，無更新數據，資料時點與今日市場狀況可能存在落差。</div>
+</div>
+</section>
+
+<section id="hotstocks">
+  <h2>③ 熱門股票一覽</h2>
+<div class="card">
+  <h3><a class="link" href="https://money.udn.com/money/story/5607/9804250">2330 台積電</a> <span class="tag down">▼1.35%</span></h3>
+  <div class="source-line"><span class="src">經濟日報</span> · 2026/10/09 03:01 盤前公告（股價為2026/10/08收盤，台灣證交所）</div>
+  <div class="summary">股價 2,550 元（<span class="neg">-35 元 / -1.35%</span>），成交量約 23,145 張。今晨公告9月營收5,118.6億元（月減0.6%、年增54.6%），第3季營收約1.49兆元創單季新高（季增17.6%），前九月累計年增41.1%，法說會將於10/15登場，市場提前聚焦權值股動向。</div>
+</div>
+
+<div class="card">
+  <h3><a class="link" href="https://setn.com/news/1919399">1301 台塑</a> <span class="tag up">▲7.83%</span></h3>
+  <div class="source-line"><span class="src">三立新聞網</span> · 2026/10/08 15:17 收盤（最新可得交易日資料，台灣證交所）</div>
+  <div class="summary">股價 81.30 元（<span class="pos">+5.90 元 / +7.83%</span>），成交量約 243,846 張，較前一交易日大幅放量逾兩倍。董事長看好石化業2026年景氣復甦，激勵買盤進場帶量急漲。</div>
+</div>
+
+<div class="card">
+  <h3><a class="link" href="https://news.cnyes.com/news/id/6625001">2603 長榮</a> <span class="tag flat">持平</span></h3>
+  <div class="source-line"><span class="src">鉅亨網</span> · 2026/10/08 17:23 營收公告（股價為2026/10/08收盤，台灣證交所）</div>
+  <div class="summary">股價 232.50 元（持平 <span class="pos">0.00 元 / 0.00%</span>），成交量約 6,766 張。9月合併營收497.11億元創近期新高，年增63.75%、月增1.48%，法人看好第3季獲利表現，旺季效應可能延續至第4季。</div>
+</div>
+
+<div class="card">
+  <h3><a class="link" href="https://money.udn.com/money/story/5710/9803623">2615 萬海</a> <span class="tag flat">持平</span></h3>
+  <div class="source-line"><span class="src">經濟日報／鉅亨網</span> · 2026/10/08 18:28 營收公告（股價為2026/10/08收盤，台灣證交所）</div>
+  <div class="summary">股價 111.50 元（持平 <span class="pos">0.00 元 / 0.00%</span>），成交量約 7,884 張。9月營收217.75億元，年增97.62%、月增13.41%，睽違26個月重登200億元水準，貨櫃航運族群買氣回溫。</div>
+</div>
+
+<div class="card">
+  <h3><a class="link" href="https://money.udn.com/money/story/5607/9804250">3008 大立光</a> <span class="tag down">▼0.15%</span></h3>
+  <div class="source-line"><span class="src">經濟日報／uanalyze</span> · 2026/10/09 03:01（股價為2026/10/07收盤，台灣證交所，為最新可得資料）</div>
+  <div class="summary">股價 6,845 元（<span class="neg">-10 元 / -0.15%</span>），成交量約 2,150 張。董事長林恩平宣布布局CPO一條龍架構，從光纖陣列(FA)模組延伸至FAU模組並送樣多排FA產品，法說會前市場關注度升溫；9月營收57.79億元，月增15.31%（年減7.31%）。</div>
+</div>
+
+<div class="card">
+  <h3><a class="link" href="https://setn.com/news/1919399">1325 恆大</a> <span class="tag up">▲9.89%</span></h3>
+  <div class="source-line"><span class="src">三立新聞網</span> · 2026/10/08 15:17 盤中（股價相對2026/10/07收盤，台灣證交所）</div>
+  <div class="summary">股價攻上漲停 30.55 元（<span class="pos">+2.75 元 / +9.89%</span>），成交量未提供（文章僅稱盤中買單明顯放大、逾6,000張排隊）。疾管署公布流感疫情處於流行高原期，單週新增219例重症、44例死亡，避險資金轉向防疫生技概念股，帶動公司股價連日走強。</div>
+</div>
+</section>
+
+<section id="financials">
+  <h2>④ 財務數據分析</h2>
+<div class="scroll-x">
+<table>
+  <thead><tr><th>股票</th><th>營收（最新公告）</th><th>EPS（最新季）</th><th>毛利率</th><th>P/E</th><th>P/B</th></tr></thead>
+  <tbody>
+    <tr><td>2330 台積電</td><td>9月5,118.6億元（月減0.6%、年增54.6%）</td><td>27.25元（2026 Q2）</td><td class="pos">67.7%（2026 Q2）</td><td>29.56</td><td>10.28</td></tr>
+    <tr><td>1301 台塑</td><td>未提供</td><td>1.68元（2026 Q2）</td><td>未提供</td><td>49.57</td><td>0.90</td></tr>
+    <tr><td>2603 長榮</td><td>9月497.11億元（年增63.75%、月增1.48%）</td><td>未提供</td><td>未提供</td><td>9.22</td><td>0.90</td></tr>
+    <tr><td>2615 萬海</td><td>9月217.75億元（年增97.62%、月增13.41%）</td><td>未提供</td><td>未提供</td><td>7.66</td><td>1.08</td></tr>
+    <tr><td>3008 大立光</td><td>9月57.79億元（月增15.31%、年減7.31%）</td><td>35.72元（2026 Q2）</td><td>49.41%（2026 Q2）</td><td>35.42</td><td>4.55</td></tr>
+    <tr><td>1325 恆大</td><td>6月2,160.60萬元（月增7.66%、年減18.4%，最新可得月度資料）</td><td>未提供</td><td>未提供</td><td>未提供</td><td>1.01</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="card">
+  <h3>個股財務亮點／風險</h3>
+  <div class="summary">
+    <p><strong>台積電</strong>：9月營收創今年次高、第3季營收季增17.6%創單季新高，Q2毛利率已達67.7%為歷史高檔，AI需求帶動成長動能強勁；惟法說會訂於10/15，法說前股價波動風險需留意。<a class="link" href="https://money.udn.com/money/story/5607/9804250">詳情</a></p>
+    <p><strong>台塑</strong>：2026年Q2每股純益僅1.68元，文中未揭露毛利率，獲利基礎仍待觀察；近日股價因董座看好石化景氣復甦急漲逾7%，追高後若基本面未同步跟上則波動風險上升。<a class="link" href="https://finance.ettoday.net/news/3198238">詳情</a></p>
+    <p><strong>長榮</strong>：9月營收年增63.75%、月增1.48%創波段新高，法人看好第3季獲利及旺季效應延續至Q4；但航運運價與淡旺季轉換仍是主要風險來源。<a class="link" href="https://news.cnyes.com/news/id/6625001">詳情</a></p>
+    <p><strong>萬海</strong>：9月營收年增97.62%、月增13.41%，睽違26個月重登200億元水準，顯示貨櫃需求強勁；惟基期已墊高，第4季成長動能能否延續仍待觀察。<a class="link" href="https://money.udn.com/money/story/5710/9803623">詳情</a></p>
+    <p><strong>大立光</strong>：Q2毛利率49.41%較去年同期下滑逾4個百分點，獲利率承壓；但董事長宣布布局CPO一條龍架構並送樣多排FA產品，為中長期成長動能增添想像空間。<a class="link" href="https://money.udn.com/money/story/5607/9804250">詳情</a></p>
+    <p><strong>恆大</strong>：最新可得的6月營收仍年減18.4%，基本面偏弱，近期股價攻上漲停主要受防疫生技題材與資金面炒作帶動，而非營收成長支撐，追高風險偏高。<a class="link" href="https://setn.com/news/1919399">詳情</a></p>
+  </div>
+</div>
+</section>
+
+<section id="emerging">
+  <h2>⑤ 新興公司與產業鏈知識</h2>
+<div class="card">
+  <h3>聯亞 (3081) <span class="tag up">矽光子/CPO</span></h3>
+  <p class="summary">
+    聯亞是做光通訊零組件的上游廠商，專長在雷射二極體與VCSEL（垂直共振腔面射雷射）等光學元件的設計製造。簡單說，它生產的是「發光用的小晶片」，賣給做光收發模組的下游廠商，最終被組進AI伺服器機房與電信機房裡，用來讓資料在機櫃之間用「光」而不是「電線」快速傳輸，是AI資料中心升級網路頻寬的關鍵零件供應商之一。
+  </p>
+  <p class="summary">
+    <strong>成長動能：</strong>公司於10月5日公布2026年9月營收5.40億元，月增3.8%、年增達<span class="pos">+190.2%</span>，前9月累計營收36.88億元、年增<span class="pos">+136.3%</span>。成長主要來自光通訊與高速通訊需求持續升溫，反映AI資料中心擴建帶動光通訊元件拉貨力道維持高檔。
+  </p>
+  <p class="source-line">
+    來源：科技新報 TechNews・發布日期：2026-10-05・
+    <a class="link" href="https://finance.technews.tw/2026/10/05/landmark-vpec-largan-2026-09-revenue/" target="_blank" rel="noopener">查看原文</a>
+  </p>
+</div>
+<div class="card">
+  <h3>全新光電 (3105) <span class="tag up">砷化鎵磊晶片</span></h3>
+  <p class="summary">
+    全新光電是光通訊與射頻晶片產業鏈最上游的「磊晶片」供應商，主要生產砷化鎵系列的化合物半導體磊晶片，賣給下游的雷射二極體、光感測元件與射頻晶片廠商加工製造。這些磊晶片最終被用在資料中心光收發模組、5G電信基地台設備，以及手機射頻前端元件中，是光通訊與無線通訊晶片的「原材料」供應商。
+  </p>
+  <p class="summary">
+    <strong>成長動能：</strong>公司於10月5日公布2026年9月合併營收4.49億元，月減4.63%，但年增<span class="pos">+29.49%</span>，前9月累計營收32.67億元、年增<span class="pos">+34.96%</span>（去年同期24.21億元）。成長主要受惠於光通訊與高速通訊相關需求持續升溫，帶動上游磊晶片訂單維持雙位數成長。
+  </p>
+  <p class="source-line">
+    來源：科技新報 TechNews・發布日期：2026-10-05・
+    <a class="link" href="https://finance.technews.tw/2026/10/05/landmark-vpec-largan-2026-09-revenue/" target="_blank" rel="noopener">查看原文</a>
+  </p>
+</div>
+</section>
+
+<section id="jia">
+  <h2>⑥ Jia 的持股分析</h2>
+<div class="scroll-x">
+<table class="table">
+<thead>
+<tr><th>股票</th><th>目前股價 / 當日漲跌%</th><th>未實現損益</th><th>目標價</th><th>分級 / 傾向判斷</th><th>理由（含跨日比對、真實數據依據、部位操作建議）</th><th>長期持有評估</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>0050<br>元大台灣50</td>
+<td>114.95<br><span class="neg">-1.10（-0.95%）</span></td>
+<td><span class="pos">+412,320（+148.65%）</span></td>
+<td>無公開目標價資料</td>
+<td><span class="pill hold">持有</span></td>
+<td>持股6,000股，平均成本46.23元，現價114.95元（資料時間10/8 14:30，今日盤中查無更新報價，退回最近可得價格），累積獲利逾148%，為9檔持股中獲利最大者。大盤權值股（台積電等）仍處高檔整理，大盤型ETF長期趨勢未變，獲利部位可續抱參與長期趨勢；若短線大盤劇烈震盪可考慮分批停利小部分，但非必要。核心資產性質，不建議因單日漲跌調整部位。以上僅為一般性觀察，非投資建議。</td>
+<td>追蹤台灣50大權值股，與台積電、鴻海等權值股連動性高，長期受惠於台灣半導體與AI供應鏈地位，基本面長期趨勢仍正向，支持繼續持有做為核心資產。</td>
+</tr>
+<tr>
+<td>0056<br>元大高股息</td>
+<td>57.75<br><span class="neg">-0.10（-0.17%）</span></td>
+<td><span class="pos">+70,860（+69.21%）</span></td>
+<td>無公開目標價資料</td>
+<td><span class="pill hold">持有</span></td>
+<td>持股3,000股，平均成本34.13元，現價57.75元（資料時間約10/6，今日查無更新報價，退回最近可得價格），獲利逾69%。高股息ETF長期配息穩定，獲利可續抱領息，除非急需資金或高股息題材明顯降溫，否則不建議因小幅波動減碼。非投資建議。</td>
+<td>高股息成分股定期調整，長期配息率具吸引力，適合作為現金流來源；需留意成分股產業集中度與未來配息率變化，整體長期持有評估仍正向。</td>
+</tr>
+<tr>
+<td>00981A<br>主動統一台股增長</td>
+<td>29.77<br><span class="pos">+0.64（+2.20%）</span></td>
+<td><span class="neg">-70（-0.23%）</span></td>
+<td>無公開目標價資料</td>
+<td><span class="pill hold">持有</span></td>
+<td>持股1,000股，平均成本29.84元，現價29.77元（查得資料時間為9/4，已逾一個月，今日及近期盤中價格皆查無更新，數據明顯過舊，僅供參考），帳面接近成本、虧損幅度極小(-0.23%)。因資料老舊，暫以現有資訊判斷：虧損輕微，建議持有觀察，待取得更新報價後再評估。非投資建議。</td>
+<td>為主動管理型台股增長ETF，規模仍屬新募集階段，長期績效取決於經理團隊選股能力，目前虧損輕微尚不影響長期持有判斷，但需持續觀察規模與淨值表現。</td>
+</tr>
+<tr>
+<td>00982A<br>主動群益台灣強棒</td>
+<td>22.83<br><span class="neg">-0.31（-1.34%）</span></td>
+<td><span class="neg">-3,720（-5.15%）</span></td>
+<td>無公開目標價資料</td>
+<td><span class="pill hold">持有</span></td>
+<td>持股3,000股，平均成本24.07元，現價22.83元（資料時間約9/29，近10個交易日無更新資料可查，僅供參考），虧損約5.15%，為ETF中虧損比例最大者。主動配息型ETF近期淨值走弱，但尚未達到停損水準，建議持有觀察，留意後續配息率與持股組成是否有重大變化；若續跌超過10%可再評估。非投資建議。</td>
+<td>主動管理高股息型ETF，配息率雖高但近期淨值波動較大，長期是否持有取決於經理人調整持股之成效，目前尚無明確基本面惡化訊號，可續持觀察。</td>
+</tr>
+<tr>
+<td>00991A<br>主動復華未來50</td>
+<td>19.35<br><span class="neg">-0.12（-0.62%）</span></td>
+<td><span class="neg">-520（-1.33%）</span></td>
+<td>無公開目標價資料</td>
+<td><span class="pill hold">持有</span></td>
+<td>持股2,000股，平均成本19.61元，現價19.35元（資料時間約10/6，今日查無更新報價，退回最近可得價格），小幅虧損1.33%。追蹤台灣龍頭50指數，與大盤連動，目前虧損輕微，建議持有觀察，非投資建議。</td>
+<td>主動式台灣未來50 ETF，核心持股多為權值科技股，長期與大盤及AI產業趨勢連動，目前虧損幅度小，長期持有基本面支持仍在。</td>
+</tr>
+<tr>
+<td>2308<br>台達電</td>
+<td>1965<br><span class="neg">-25.00（-1.26%）</span></td>
+<td><span class="pos">+2,809（+6.06%）</span></td>
+<td>本次未查得最新法人目標價資料，暫缺</td>
+<td><span class="pill hold">🟢 正常</span></td>
+<td>證交所STOCK_DAY實際數據（共47個交易日，8/3~10/8）：現價1,965元，高於MA20（1,831.0元）與MA60(47日，1,796.06元），A項不成立。最近3個交易日收盤10/6:2,050→10/7:1,990→10/8:1,965，10/6為上漲日，非連續3日收黑，B項不成立。10/8成交量5,522,606股，為近10日均量11,301,396股的0.49倍，未達1.5倍且未爆量，C項不成立。證交所T86法人資料本次兩次嘗試（10/7、10/8）皆查無資料，改用新聞搜尋近似法：近日新聞未見明顯外資/投信大幅賣超台達電之報導，D項暫不成立。四項皆不成立，分級🟢正常。近3個月最高收盤2,050元(10/6)，現價回落4.15%。與昨日（2026-10-08，🟢正常，回落2.93%）相比，分級相同，惟回落幅度略升（2.93%→4.15%），屬正常波動範圍。核心-衛星部位：🟢不建議調整部位。</td>
+<td>台達電受惠AI伺服器電源與散熱、資料中心電源管理需求強勁，公司營收與毛利率維持成長動能，長期產業趨勢（AI基礎設施、電動車電源）仍屬正向，支持繼續長期持有。</td>
+</tr>
+<tr>
+<td>2330<br>台積電</td>
+<td>2550<br><span class="neg">-35.00（-1.35%）</span></td>
+<td><span class="pos">+32,925.75（+4.93%）</span></td>
+<td>本次未查得最新法人目標價資料，暫缺</td>
+<td><span class="pill hold">🟡 動能轉弱觀察</span></td>
+<td>證交所STOCK_DAY實際數據（共47個交易日，8/3~10/8）：現價2,550元，高於MA20（2,476.5元）與MA60(47日，2,431.38元），A項不成立。最近3個交易日收盤10/6:2,585→10/7:2,585（平盤）→10/8:2,550，非連續3日收黑（10/7為平盤非下跌），B項不成立。10/8成交量23,145,193股，為近10日均量22,091,871股的1.05倍，未達1.5倍，C項不成立。證交所T86法人資料本次兩次嘗試（10/7、10/8）皆查無資料，改用新聞搜尋近似法：延續前次（10/8）已確認之法人賣超訊號，且今日股價續跌1.35%，方向一致，判定D項（法人賣超）成立（近似法，證交所資料無法取得）。合計1項成立（D），分級🟡動能轉弱觀察。近3個月最高收盤2,585元(10/6、10/7並列)，現價回落1.35%。與昨日（2026-10-08，🟡動能轉弱觀察，D項成立，回落0.58%）相比，分級相同，回落幅度上升（0.58%→1.35%），訊號強度較昨日略增但仍屬示警觀察層級，尚未達減碼門檻。核心-衛星部位：🟡不建議調整部位，持續觀察即可。</td>
+<td>台積電為全球晶圓代工龍頭，AI/HPC晶片需求與先進製程（2nm以下）訂單能見度仍高，長期產業地位與獲利結構穩固，法人長線目標價多維持正向看法。短期評價偏高、法人賣超訊號值得留意，但長期基本面仍支持持有。</td>
+</tr>
+<tr>
+<td>2454<br>聯發科</td>
+<td>4790<br><span class="neg">-45.00（-0.93%）</span></td>
+<td><span class="neg">-1,086（-4.34%）</span></td>
+<td>本次未查得最新法人目標價資料，暫缺</td>
+<td><span class="pill trim">🟠 波段減碼建議</span></td>
+<td>證交所STOCK_DAY實際數據（共46個交易日，8/3~10/7，10/8當日證交所尚未提供收盤資料，以盤中查得10/8 09:38價格4,790元視為最新交易日資料）：現價4,790元，低於MA20（4,835.5元，以10/7為止20日均價），A項成立。最近3個交易日10/6:4,920→10/7:4,835→10/8:4,790，三日連續收黑，B項成立（為今日新增觸發項目，昨日尚未列入）。10/7成交量7,695,137股，為近10日均量7,843,657股的0.98倍，未達1.5倍，C項不成立。證交所T86法人資料本次兩次嘗試（10/7、10/8）皆查無資料，改用新聞搜尋近似法：延續前次（10/8）已確認之法人（含投信）賣超訊號，且股價持續破底，判定D項（法人賣超）成立（近似法）。合計3項成立（A+B+D），且回落幅度9.37%≥8%，分級🟠波段減碼建議。近3個月最高收盤5,285元(9/24)，現價回落9.37%。與昨日（2026-10-08，🟠波段減碼建議，A+D兩項成立，回落9.37%）相比，分級相同（🟠），但今日新增B項（連續3日收黑），觸發訊號組合較昨日更嚴重（A+D→A+B+D），回落幅度維持9.37%（因今日無新收盤價，沿用10/8資料）。核心-衛星部位操作建議：建議賣出衛星部位一半，即原總持股5股的35%≈1.75股（實務若僅能整股交易，約為2股），續抱約3.25股（即核心30%＋部分衛星，約65%）。衛星部位回補建議：因本次分級仍為🟠（未降回🟢/🟡），暫緩回補，等待訊號進一步穩定。以上為量化訊號觸發之部位建議，非投資建議。</td>
+<td>聯發科在AI邊緣運算、手機SoC與ASIC業務仍有長期成長題材，但近期股價自高點回落逾9%，顯示短期動能轉弱、法人調節壓力增加。若公司基本面（毛利率、大客戶訂單）未見明顯惡化，長期仍可持有觀察，但短期建議依量化訊號逐步減碼衛星部位控制風險。</td>
+</tr>
+<tr>
+<td>3044<br>泰鼎-KY</td>
+<td>579<br><span class="neg">0.00（0.00%，資料未更新）</span></td>
+<td><span class="neg">-382（-0.66%）</span></td>
+<td>本次未查得最新法人目標價資料，暫缺</td>
+<td><span class="pill hold">🟢 正常</span></td>
+<td>證交所STOCK_DAY以代號3044查詢10月資料，連續兩次嘗試（date=20261001）皆回傳「沒有符合條件的資料」，無法取得10月實際收盤數據；8、9月資料可正常取得（共41個交易日，收盤區間約374~543元）。因10月資料證交所無法取得，技術指標與現價均延用前次（2026-10-08）已查得之結果：現價579元、MA20約520.9元、MA60(45日)約487.2元，現價高於MA20與MA60，A項不成立；因無新交易日資料可比對，B、C項暫不成立（資料不足）；T86法人資料本次查詢亦無結果，改用新聞搜尋近似法，未見明顯賣超訊息，D項不成立。合計0項成立，分級🟢正常，回落幅度0%（現價即為近3個月高點，與昨日相同）。與昨日（2026-10-08，🟢正常，回落0%）相比，分級與數值皆相同（因資料未更新）。核心-衛星部位：🟢不建議調整部位。<br><b>資料品質提醒：</b>證交所STOCK_DAY代號3044實際查得之8~9月收盤價區間（374~543元）與現價579元之間落差不大致於合理延續，但無法以10月真實交易數據驗證；此外需留意「3044」在證交所公開資料中對應公司與「泰鼎-KY」市場習慣認知是否一致，建議使用者再次核對股票代號對應關係。以上為量化訊號觀察，非投資建議。</td>
+<td>所屬PCB/ABF載板產業受惠AI伺服器與高階運算載板需求成長，若近期營收維持成長動能，長期產業趨勢仍屬正向；惟本次因證交所資料無法完整驗證最新交易狀況，且代號對應疑慮未解，建議長期持有決策前再次確認標的身分與基本面資訊。</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="grid2">
+<div class="stat"><div class="label">總成本</div><div class="value">1,318,998</div></div>
+<div class="stat"><div class="label">總現值</div><div class="value">1,832,135</div></div>
+<div class="stat"><div class="label">總未實現損益</div><div class="value pos">+513,137（+38.90%）</div></div>
+</div>
+
+<div class="warn">
+免責聲明：本報表資料來源包括台灣證券交易所公開資訊（STOCK_DAY個股日成交資訊、T86三大法人買賣超彙總表）及網路搜尋結果，部分股票/ETF因證交所當日資料尚未發布、WebFetch查詢無結果或網路來源資料時間較舊（已於各列理由欄標註資料時間），故以最近可得之收盤價或盤中價格替代即時報價，可能與實際盤中價格有落差。法人買賣超（D項訊號）因證交所T86多次查詢均無法取得資料，已改採新聞搜尋近似法推估，非逐筆驗證之官方數據。3044（泰鼎-KY）之10月技術數據因證交所查無資料而延用前次結果，且股票代號對應疑慮請自行再次確認。本報表所有分級、傾向判斷、部位操作建議（含加碼/持有/減碼/賣出、核心-衛星部位調整、回補建議）均為量化規則下之機械式判斷，僅供參考，不構成任何投資建議，投資人應自行判斷並承擔投資風險。
+</div>
+</section>
+
+<section id="yu">
+  <h2>⑦ Yu 的持股分析</h2>
+<div class="scroll-x">
+<table class="table">
+<thead>
+<tr><th>股票</th><th>目前股價（漲跌%）</th><th>未實現損益（金額/%）</th><th>目標價</th><th>分級／傾向判斷</th><th>理由（含數據依據與部位操作建議）</th><th>長期持有評估</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>0050<br>元大台灣50</td>
+<td>114.95<br><span class="neg">-1.10（-0.95%）</span></td>
+<td><span class="pos">+45,350（+65.16%）</span></td>
+<td>無公開目標價資料</td>
+<td><span class="pill hold">持有</span></td>
+<td>0050為市值型大盤ETF，現價114.95元（因盤中即時報價多次查詢皆取得快取/舊資料，改採最近一個交易日10/08收盤價），較前一交易日(10/07)下跌1.10元（-0.95%）。目前未實現損益+45,350元（+65.16%），為獲利最豐厚部位之一，屬核心大盤曝險工具。傾向持有：長期追蹤台灣50大權值股，單日小幅回檔多為大盤系統性波動，無需因此調整核心ETF倉位。（非投資建議）</td>
+<td>追蹤台灣市值前50大權值股，長期與台股大盤同步成長，適合作為核心資產配置，基本面與產業分散度支持長期持有。</td>
+</tr>
+<tr>
+<td>0052<br>富邦科技</td>
+<td>67.00<br><span class="neg">-0.65（-0.96%）</span></td>
+<td><span class="pos">+7,920（+13.41%）</span></td>
+<td>無公開目標價資料</td>
+<td><span class="pill hold">持有</span></td>
+<td>0052為台灣科技股ETF，現價67.00元（最近交易日10/08收盤價，盤中即時報價無法穩定取得），較前一交易日下跌0.65元（-0.96%）。未實現損益+7,920元（+13.41%）。傾向持有：科技/半導體產業長線成長動能仍在，短期回檔屬正常波動，可持續持有分享產業成長。（非投資建議）</td>
+<td>集中於半導體與科技龍頭（如台積電權重高），受惠AI與先進製程需求，長期產業趨勢仍支持持有，但波動度高於大盤型ETF。</td>
+</tr>
+<tr>
+<td>0056<br>元大高股息</td>
+<td>58.30<br><span class="neg">-0.15（-0.26%）</span></td>
+<td><span class="pos">+297,700（+64.69%）</span></td>
+<td>無公開目標價資料</td>
+<td><span class="pill hold">持有</span></td>
+<td>0056為高股息ETF，現價58.30元（最近交易日10/08收盤價），較前一交易日下跌0.15元（-0.26%）。未實現損益+297,700元（+64.69%），為9檔持股中獲利金額最大部位。傾向持有：高股息ETF訴求穩定配息與防禦性，單日小幅回檔不影響長期配息收益邏輯。（非投資建議）</td>
+<td>以高股息、低波動選股邏輯為主，長期提供穩定配息現金流，適合作為收益型核心資產，長期持有邏輯不變。</td>
+</tr>
+<tr>
+<td>00981A<br>主動統一台股增長</td>
+<td>32.26<br><span class="neg">-0.34（-1.04%）</span></td>
+<td><span class="pos">+12,920（+11.13%）</span></td>
+<td>無公開目標價資料</td>
+<td><span class="pill hold">持有</span></td>
+<td>00981A為主動式管理台股增長ETF，現價32.26元（註：證交所10/08當日資料缺漏，改採最近可取得之10/07收盤價），較前一交易日(10/06)下跌0.34元（-1.04%）。未實現損益+12,920元（+11.13%）。傾向持有：掛牌以來股價表現強勢（市場報導規模與成交量均創新高），屬主動管理型ETF可動態調整持股，短期波動偏大但建議續抱觀察基金經理操作。（非投資建議）</td>
+<td>主動式選股策略聚焦台股成長股，規模與買氣持續擴大，長期績效取決於經理人選股能力，目前動能仍強，可續抱觀察。</td>
+</tr>
+<tr>
+<td>2002<br>中鋼</td>
+<td>18.95<br><span class="neg">0.00（0.00%）</span></td>
+<td><span class="neg">-16,100（-14.52%）</span></td>
+<td>法人長期目標價約19~21元區間（鋼價循環影響，無單一明確共識目標價）</td>
+<td><span class="pill hold">🟡 動能轉弱觀察</span></td>
+<td>現價18.95元，與前一交易日(10/07)持平（0.00%）。A項成立：現價18.95元低於MA60（19.01元，以近3個月47個交易日計算），但高於MA20（18.85元）。B項不成立：近3日(10/06~10/08)收盤皆為18.95元，無連續下跌。C項不成立：未見量能異常放大。D項：證交所T86三大法人資料因檔案過大無法完整取得，改用新聞搜尋近似，惟未見明顯外資/投信賣超報導，近似判定不成立。近3個月最高收盤19.75元(08/11,08/12)，現價回落4.05%（以近3個月高點計算，非52週高點）。綜合研判為🟡動能轉弱觀察，與前次(10/08)分級相同（惟本次均線口徑改為標準MA20/MA60，前次為MA46/MA20），回落幅度由3.80%略增至4.05%，風險程度大致持平、略增。核心-衛星部位：🟡不建議調整，續抱原有5,000股。回補部位：前次分級非🟠/🔴，不適用。</td>
+<td>中鋼為台灣鋼鐵業龍頭，獲利與鋼價、兩岸供需循環高度相關，目前鋼價處於盤整格局，短期承壓，但資產雄厚、殖利率具吸引力，可視為長期防禦型持股，惟需觀察鋼價與下游需求回溫速度。</td>
+</tr>
+<tr>
+<td>2308<br>台達電</td>
+<td>1,965<br><span class="neg">-25（-1.26%）</span></td>
+<td><span class="neg">-6,853（-4.75%）</span></td>
+<td>法人普遍看法偏多，多數報告目標價區間約2,100~2,300元</td>
+<td><span class="pill hold">🟢 正常</span></td>
+<td>現價1,965元，較前一交易日(10/07，1,990元)下跌25元（-1.26%）。A項不成立：現價仍高於MA20（1,831.0元）及MA60（1,796.1元，以近3個月47個交易日計算）。B項不成立：近3日(10/06~10/08)收盤2,050→1,990→1,965，連跌2日但未達連續3日(10/05較10/02為上漲)。C項不成立：未見量能異常放大。D項：證交所T86資料無法完整取得，改用新聞搜尋近似，查得近期分別有外資、投信買超台達電之報導，籌碼面未見明顯賣超訊號，近似判定不成立。近3個月最高收盤2,050元(10/06)，現價回落4.15%（較前次3.41%略增）。綜合研判為🟢正常，與前次(10/08)分級相同。核心-衛星部位：🟢不建議調整，續抱原有70股。</td>
+<td>台達電受惠AI伺服器電源、散熱與電動車相關產品需求持續成長，營收與市值屢創新高，長期基本面與法人展望仍偏多，短期自高點回落不改變長期持有邏輯。</td>
+</tr>
+<tr>
+<td>2646<br>星宇航空</td>
+<td>20.10<br><span class="neg">0.00（0.00%）</span></td>
+<td><span class="pos">+954.8（+2.03%）</span></td>
+<td>尚無穩定公開目標價共識，多數報告聚焦營運轉盈時點而非目標價</td>
+<td><span class="pill hold">🟡 動能轉弱觀察</span></td>
+<td>現價20.10元，與前一交易日(10/07)持平（0.00%）。A項成立：現價低於MA20（20.20元）及近似60日均線（20.48元，以可取得之34個交易日計算）。B項不成立：近3日(10/06~10/08)收盤20.00→20.10→20.10，僅10/06較10/05下跌1日，非連續3日。C項不成立。D項：證交所T86資料無法完整取得，改用新聞搜尋近似，未查得明顯外資/投信賣超報導，近似判定不成立。註：證交所STOCK_DAY資料8月12日至8月30日仍缺漏，本次合計取得34個交易日資料（較前次30日略有補充）。近3個月最高收盤21.35元(08/03)，現價回落5.85%（較前次6.09%略有改善）。綜合研判為🟡動能轉弱觀察，與前次(10/08)分級相同，回落幅度較昨日改善。核心-衛星部位：🟡不建議調整，續抱原有2,387股。回補部位：前次分級非🟠/🔴，不適用。</td>
+<td>星宇航空為台灣新興航空公司，航線擴張與運能成長題材持續發酵，惟航空業易受油價、匯率與景氣循環影響，波動度偏高，長期持有需觀察載客率提升與獲利轉正進度。</td>
+</tr>
+<tr>
+<td>2330<br>台積電</td>
+<td>2,550<br><span class="neg">-35（-1.35%）</span></td>
+<td><span class="pos">+460,757.8（+45.25%）</span></td>
+<td>多數外資法人目標價上調至2,700~3,000元區間</td>
+<td><span class="pill hold">🟢 正常</span></td>
+<td>現價2,550元，較前一交易日(10/07，2,585元)下跌35元（-1.35%）。A項不成立：現價高於MA20（2,476.5元）及MA60（2,431.4元，以近3個月47個交易日計算）。B項不成立：近3日(10/06~10/08)收盤2,585→2,585→2,550，僅10/08下跌1日，非連續3日。C項不成立。D項：證交所T86資料無法完整取得，改用新聞搜尋近似，查得近期法說會行情、外資逢低加碼等偏多報導，籌碼面未見明顯賣超訊號，近似判定不成立。近3個月最高收盤2,585元(10/06,10/07)，現價回落1.35%（較前次0.97%略增，仍處相對高檔）。綜合研判為🟢正常，與前次(10/08)分級相同。核心-衛星部位：🟢不建議調整，續抱原有580股。</td>
+<td>台積電為全球晶圓代工龍頭，先進製程與AI晶片需求維持強勁，法人普遍看好中長期營收與獲利成長動能，目前股價雖處高檔，長期持有邏輯不變。</td>
+</tr>
+<tr>
+<td>4927<br>泰鼎-KY</td>
+<td>54.20<br><span class="neg">-0.30（-0.55%）</span></td>
+<td><span class="pos">+30,780（+6.73%）</span></td>
+<td>尚無穩定公開目標價共識，多為PCB產業景氣相關評論</td>
+<td><span class="pill hold">🟡 動能轉弱觀察</span></td>
+<td>現價54.20元（註：證交所STOCK_DAY資料10月僅公布10/01、10/02兩筆，10/05~10/08缺漏，改採新聞/行情頁面彙整之10/08收盤價近似），較前一交易日(10/07，54.50元)下跌0.30元（-0.55%）。A項不成立：現價遠高於MA20（45.26元）及MA60（40.08元，以近3個月47個交易日、含補充來源計算）。B項不成立：近3日(10/06~10/08)收盤52.30→54.50→54.20，漲跌交錯，非連續3日下跌。C項：10/05~10/08成交量資料缺漏，無法驗證「量能達10日均量1.5倍且收黑」條件，保守不計入。D項：證交所T86三大法人資料因檔案過大無法取得，改用新聞搜尋近似——查得10/07新聞明確提及泰鼎-KY「籌碼偏空訊號未解」，顯示籌碼面偏空，近似判定D項成立。近3個月最高收盤54.50元(10/07)，現價僅回落0.55%，仍處近期高點附近。綜合研判為🟡動能轉弱觀察（D項近似成立），較前次(10/08，🟢正常)轉趨保守——本次為今日新出現的警示訊號，主因籌碼面新聞示警而非價格或均線轉弱（價格technicals仍強勢），建議留意但非強烈訊號。核心-衛星部位：🟡不建議調整，惟因近期連續2次漲停後漲勢趨緩，宜留意追高風險，暫不加碼。</td>
+<td>泰鼎-KY受惠PCB(印刷電路板)產業景氣回溫、泰國產能擴充及高階板佈局題材，近期營收與股價表現強勁，若訂單動能延續，長期仍具成長性，但短期漲幅已大，需留意獲利回吐風險與籌碼面波動。</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="grid2">
+<div class="stat"><div class="label">總成本</div><div class="value">NT$ 2,482,539</div></div>
+<div class="stat"><div class="label">總現值</div><div class="value">NT$ 3,315,969</div></div>
+<div class="stat"><div class="label">總未實現損益</div><div class="value pos">+NT$ 833,430（+33.57%）</div></div>
+</div>
+
+<div class="warn">
+資料限制與免責聲明：(1) 今日(2026/10/09)台股盤中即時報價多次透過網路查詢皆取得非當日之快取/舊頁面資料，故「目前股價」改以最近一個可確認交易日(多為10/08，00981A與4927另有說明)之證交所或行情頁面收盤價替代，非真正盤中即時價，可能與實際盤中成交價有落差。(2) 個股均線(MA20/MA60)與3個月最高收盤價，皆以證交所STOCK_DAY近3個月(2026/08~10)公開資料計算；其中2646(星宇航空)8/12~8/30、4927(泰鼎-KY)9/25、9/28資料缺漏，已以其他行情網站(stock.wearn.com等)補充部分缺口並於理由欄註明，MA60在資料不足60日時以實際可取得天數計算。(3) 三大法人(T86)買賣超資料因證交所回傳檔案過大，WebFetch工具多次截斷無法取得完整個股資料，已改用新聞搜尋近似判斷籌碼面方向，屬定性近似，非精確買賣超數字。(4) 本報告所有分級、傾向判斷、部位操作建議均僅為量化規則與公開資訊之歸納整理，不構成任何投資建議，投資人應自行判斷並承擔投資風險。
+</div>
+</section>
+
+<div class="disclaimer">
+  本看板內容由AI自動彙整公開新聞與市場資訊，資料時點：今日休市（10/10國慶日補假），資料採最近交易日(2026-10-08)收盤數據。個股與持股報價若因來源限制採用較早快照，均已於各區塊標註資料日期，請以台灣證券交易所及各大看盤軟體之官方即時數據為最終依據。持股操作建議皆非專業投資意見，請自行評估風險。
+</div>
+
+</main>
+</body>
+</html>
